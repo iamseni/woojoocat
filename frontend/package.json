@@ -4,9 +4,8 @@
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^13.5.0",
+    "@types/node": "^26.0.1",
     "eslint-config-react-app": "^7.0.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -14,10 +13,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite --config src/vite.config.ts",
+    "dev": "vite --config src/vite.config.ts",
+    "build": "tsc && vite build --config src/vite.config.ts",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview --config src/vite.config.ts",
+    "test": "jest"
   },
   "browserslist": {
     "production": [
@@ -32,14 +33,24 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/express": "^5.0.6",
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
+    "@vitejs/plugin-react": "^6.0.3",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "ts-loader": "^9.6.2",
     "tsx": "^4.22.4",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite": "^8.1.0"
   },
   "allowScripts": {
-    "esbuild@0.28.1": true
+    "esbuild@0.28.1": true,
+    "unrs-resolver@1.12.2": true
   }
 }
