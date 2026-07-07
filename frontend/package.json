@@ -16,7 +16,7 @@
   "scripts": {
     "start": "vite --config src/vite.config.ts",
     "dev": "vite --config src/vite.config.ts",
-    "build": "tsc && vite build --config src/vite.config.ts",
+    "build": "tsc --noEmit && vite build --config src/vite.config.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview --config src/vite.config.ts",
     "test": "jest"

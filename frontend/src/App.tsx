@@ -1,7 +1,14 @@
-//import logo from './logo.svg';
-//import './App.css';
-import React from 'react';
+const App = () => {
+  return (
+    <div>
+      <h1>Woojoo Cat</h1>
+    </div>
+  );
+};
 
+export default App;
+
+/* js스타일 코드
 function App() {
   return (
     <div>
@@ -13,3 +20,4 @@ function App() {
 }
 
 export default App;
+*/
