@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# woojoocat
 
-## Getting Started
+woojoocat은 원래 진행하던 개인 프로젝트입니다. 2026년 7월 중순부터 8월 9일까지는 프로젝트를 잠시 멈추고, 에어컨 기능 구현 스터디를 통해 라우팅, 입력 검증, 상태 분기, 응답 메시지 설계를 정리했습니다. 이후 다시 woojoocat 본 프로젝트로 재개하는 흐름으로 정리하고 있습니다.
 
-First, run the development server:
+## 프로젝트 기간
+
+- 2026.07.23 - 2026.08.09
+
+## 진행 배경
+
+- 원래는 woojoocat 프로젝트를 계속 진행하려 했습니다.
+- 중간에 API 설계와 라우팅을 연습할 필요가 있어서 에어컨 제어 기능 구현으로 범위를 바꿔 스터디를 진행했습니다.
+- 현재는 이 스터디를 발판으로 다시 woojoocat 프로젝트를 재개하는 단계입니다.
+
+## 설계 흐름
+
+이 스터디는 단순히 에어컨을 켜고 끄는 기능을 만드는 데서 끝내지 않고, 변수의 범위와 상태 관리 방식을 함께 정리하는 용도로 진행했습니다.
+
+### 1. 전역 변수 / 지역 변수 학습용
+
+에어컨의 전체 상태를 하나의 전역 상태로 두고, 분기 흐름에 따라 값이 어떻게 바뀌는지 확인하기 위해 만든 구조입니다.
+
+![alt text](image-2.png)
+
+### 2. 회사 내부 방별 상태 관리 심화 버전
+
+회사 내부의 각 방을 개별 상태로 관리하면서, URL 파라미터와 JSON 응답을 함께 다루는 심화 버전입니다.
+
+![alt text](image-1.png)
+
+## 스터디에서 다룬 내용
+- Next.js App Router 기반 API 라우팅
+- URL path parameter와 query parameter 분리
+- 방 이름, 액션, 모드, 세기 입력 검증
+- 상태에 따라 다른 JSON 응답 메시지 반환
+- 에어컨 전원 on/off 분리 엔드포인트 구성
+
+## API 예시
+
+- `GET /api/ac/[room]?action=on&mode=냉방&power=2`
+- `GET /api/ac/powerOn`
+- `GET /api/ac/powerOff`
+
+## 사용 기술
+
+- Next.js 16
+- React 19
+- TypeScript
+
+## 이 스터디의 포인트
+
+- 요구사항을 기준으로 API 경로를 다시 설계한 점
+- 입력값 검증과 예외 처리를 분리해서 관리한 점
+- 같은 기능이라도 상태별 응답을 명확히 나눈 점
+- 단순 구현이 아니라, 이후 본 프로젝트 재개를 위한 중간 실험으로 정리한 점
+
+## 실행 방법
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+개발 서버를 실행한 뒤 `http://localhost:3000/api/ac/[룸이름]?쿼리파라미터`에서 확인할 수 있습니다.
