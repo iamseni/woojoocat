@@ -1,0 +1,8 @@
+allowBuilds:
+  carbon-components-svelte: true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
